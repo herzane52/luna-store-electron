@@ -43,7 +43,7 @@
     "clearCacheSuccess": "Önbellek başarıyla temizlendi. Bazı değişikliklerin görünmesi için uygulamayı yeniden başlatmanız gerekebilir.",
     "clearCacheError": "Önbellek temizleme hatası: ",
     "resetSetup": "Kurulumu Sıfırla",
-    "resetSetupConfirm": "Kurulumu sıfırlamak istediğinize emin misiniz? Uygulama yeniden başlatılacaktır."
+    "resetSetupConfirm": "Kurulumu sıfırlamak istediğinize emin misiniz? Uygulama önce kapanacaktır."
   },
   "about": {
     "title": "Hakkında",
@@ -199,7 +199,9 @@
     "select_helper": "Varsayılan AUR Yardımcısı Seçin",
     "arch_error": "Sisteminiz Arch tabanlı olup olmadığı tespit edilemedi. Bazı özellikler çalışmayabilir.",
     "checking": "Kontrol ediliyor...",
-    "finish_desc": "Yapılandırma tamamlandı. Luna Store artık kullanıma hazır. Başlamak için butona tıklayın."
+    "finish_desc": "Yapılandırma başarıyla kaydedildi.",
+    "restart_manual": "Değişikliklerin uygulanması için lütfen uygulamayı kapatıp tekrar başlatın.",
+    "close_and_exit": "Uygulamayı Kapat"
   },
   "themes": {
     "dark": "Karanlık",

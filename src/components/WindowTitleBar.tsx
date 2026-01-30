@@ -2,25 +2,15 @@
 
 import React from "react";
 import { Minus, Square, X as CloseIcon } from "lucide-react";
-import tr from "../locales/tr.json";
-import en from "../locales/en.json";
+import { useApp } from "../context/AppContext";
 
 interface WindowTitleBarProps {
     title?: string;
     showLogo?: boolean;
-    lang?: string;
 }
 
-const WindowTitleBar: React.FC<WindowTitleBarProps> = ({ title = "LUNA STORE", showLogo = true, lang = "tr" }) => {
-    const translations = lang === "tr" ? tr : en;
-    const t = (key: string) => {
-        const keys = key.split(".");
-        let value: any = translations;
-        for (const k of keys) {
-            value = value?.[k];
-        }
-        return value || key;
-    };
+const WindowTitleBar: React.FC<WindowTitleBarProps> = ({ title = "LUNA STORE", showLogo = true }) => {
+    const { t } = useApp();
 
     const handleMinimize = () => {
         if (typeof window !== 'undefined' && window.api) {

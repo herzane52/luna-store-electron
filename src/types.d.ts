@@ -3,6 +3,8 @@ declare global {
   interface Window {
     api: {
       getAppVersion: () => Promise<string>;
+      relaunch: () => Promise<void>;
+      quit: () => Promise<void>;
       pacman: {
         getInstalledPackages: (force?: boolean) => Promise<{ packages?: { name: string; version: string; repo?: string; type?: string; }[]; error?: string; fromCache?: boolean }>;
         search: (query: string) => Promise<{ results?: any[]; error?: string }>;

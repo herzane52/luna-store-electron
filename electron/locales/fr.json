@@ -43,7 +43,7 @@
         "clearCacheSuccess": "Cache effacé avec succès. Vous devrez peut-être redémarrer l'application pour que certains changements apparaissent.",
         "clearCacheError": "Erreur lors de l'effacement du cache : ",
         "resetSetup": "Réinitialiser la configuration",
-        "resetSetupConfirm": "Êtes-vous sûr de vouloir réinitialiser la configuration ? L'application sera redémarrée."
+        "resetSetupConfirm": "Êtes-vous sûr de vouloir réinitialiser la configuration ? L'application se fermera d'abord."
     },
     "about": {
         "title": "À propos",
@@ -163,7 +163,9 @@
         "select_helper": "Choisir l'assistant AUR par défaut",
         "arch_error": "Impossible de détecter si votre système est basé sur Arch. Certaines fonctionnalités peuvent ne pas fonctionner.",
         "checking": "Vérification...",
-        "finish_desc": "Configuration terminée. Luna Store est maintenant prêt à l'emploi. Cliquez sur le bouton pour commencer."
+        "finish_desc": "Configuration enregistrée avec succès.",
+        "restart_manual": "Veuillez fermer et redémarrer l'application pour que les modifications prennent effet.",
+        "close_and_exit": "Fermer l'application"
     },
     "themes": {
         "dark": "Sombre",

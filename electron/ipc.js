@@ -14,14 +14,21 @@ function loadIpcHandlers(mainWindow) {
   windowIpc(mainWindow);
   aurIpc(mainWindow);
 
-  // Diyalog IPC
-  ipcMain.handle('dialog:open-file', async (event, options) => {
-    const result = await dialog.showOpenDialog(mainWindow, {
-      properties: ['openFile'],
-      filters: [{ name: 'Arch Paketleri', extensions: ['pkg.tar.zst', 'pkg.tar.xz'] }],
-      ...options
-    });
-    return result;
+  // Uygulama Seviyesi IPC (Manuel Restart Yaklaşımı)
+  ipcMain.handle('app:relaunch', async () => {
+    const { app } = require('electron');
+    const { killPty } = require('./manager/terminal/index');
+    const { killActiveProcess } = require('./manager/pacman/operations');
+
+    try { killPty(); } catch (e) { }
+    try { killActiveProcess(); } catch (e) { }
+
+    app.exit(0);
+  });
+
+  ipcMain.handle('app:quit', () => {
+    const { app } = require('electron');
+    app.quit();
   });
 }
 

@@ -2,6 +2,9 @@
 const { app, BrowserWindow, Tray, Menu, ipcMain } = require('electron');
 const fs = require('fs');
 const path = require('path');
+const serve = require('electron-serve');
+
+const serveDir = (serve.default || serve)({ directory: path.join(__dirname, '../build/out'), hostname: 'app' });
 
 process.on('uncaughtException', (error) => {
   console.error('KRİTİK HATA:', error);
@@ -19,6 +22,12 @@ app.commandLine.appendSwitch('ignore-gpu-blocklist'); // GPU hızlandırmayı zo
 app.commandLine.appendSwitch('enable-gpu-rasterization');
 app.commandLine.appendSwitch('enable-zero-copy');
 
+// Wayland Desteği için otomatik algılama ve bayraklar
+if (process.env.XDG_SESSION_TYPE === 'wayland') {
+  app.commandLine.appendSwitch('ozone-platform-hint', 'auto');
+  app.commandLine.appendSwitch('enable-features', 'WaylandWindowDecorations');
+}
+
 let splash;
 let mainWindow;
 
@@ -26,27 +35,15 @@ const settingsManager = require('./manager/settings/manager');
 // ELECTRON_IS_DEV=false ise her zaman üretim moduna geç
 const isDev = process.env.ELECTRON_IS_DEV === 'false' ? false : (!app.isPackaged || process.env.ELECTRON_IS_DEV === 'true');
 
-function getTargetUrl() {
+function getRouteInfo() {
   const settings = settingsManager.get();
-  const baseUrl = isDev
-    ? 'http://localhost:3000'
-    : `file://${path.join(__dirname, '../build/out/index.html')}`;
-
+  const route = settings.setupComplete ? '/loading' : '/setup';
   const queryParams = settings.setupComplete
     ? `?lang=${settings.language}&theme=${settings.theme}&defaultPage=${settings.defaultPage}`
     : '';
 
-  const route = settings.setupComplete ? '/loading' : '/setup';
-
-  if (!isDev) {
-    // Statik export'ta pathler .html ile biter
-    return `file://${path.join(__dirname, '../build/out')}${route}.html${queryParams}`;
-  }
-
-  return `${baseUrl}${route}${queryParams}`;
+  return { route, queryParams };
 }
-
-const targetUrl = getTargetUrl();
 
 // Ana pencereyi oluştur
 function createMainWindow() {
@@ -81,8 +78,14 @@ function createMainWindow() {
   const loadIpcHandlers = require('./ipc');
   loadIpcHandlers(mainWindow);
 
-  // Uygulama URL'sini yükle
-  mainWindow.loadURL(targetUrl);
+  if (isDev) {
+    const { route, queryParams } = getRouteInfo();
+    mainWindow.loadURL(`http://localhost:3000${route}${queryParams}`);
+  } else {
+    const { route, queryParams } = getRouteInfo();
+    // Statik export'ta pathler
+    mainWindow.loadURL(`app://app${route}.html${queryParams}`);
+  }
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -139,7 +142,7 @@ app.on('ready', () => {
   createMainWindow();
   splash.show();
 
-  // Sayfa yüklendiğinde splash'ı kapat ve ana pencereyi göster
+  // Sayfa yüklendiğinde splash'ı kapat ve ana pencereyi göster (dev ortamında çalışırken iyi build edince gereksiz gibi)
   mainWindow.webContents.once('did-finish-load', () => {
     console.log('Sayfa başarıyla yüklendi.');
     setTimeout(() => {
@@ -147,7 +150,7 @@ app.on('ready', () => {
       if (mainWindow && !mainWindow.isDestroyed()) {
         mainWindow.show();
       }
-    }, 300);
+    }, 1 * 1000);//1 saniye bekle
   });
 
   mainWindow.webContents.once('did-fail-load', (event, errorCode, errorDescription) => {
@@ -157,9 +160,33 @@ app.on('ready', () => {
   });
 });
 
+function cleanupAndExit(restart = false) {
+  try {
+    // PTY ve Pacman süreçlerini temizle
+    const { killPty } = require('./manager/terminal/index');
+    const { killActiveProcess } = require('./manager/pacman/operations');
+
+    killPty();
+    killActiveProcess();
+
+    // Pencereleri yok et
+    BrowserWindow.getAllWindows().forEach(win => {
+      if (!win.isDestroyed()) win.destroy();
+    });
+
+    if (restart) {
+      app.relaunch();
+    }
+    app.exit(0); // app.quit() yerine daha garantili çıkış
+  } catch (e) {
+    console.error('Cleanup error:', e);
+    process.exit(restart ? 1 : 0);
+  }
+}
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit();
+    cleanupAndExit(false);
   }
 });
 

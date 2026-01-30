@@ -102,10 +102,12 @@ function runInTerminal(command, args) {
   });
 }
 
+function killActiveProcess() { if (activeProcess) { try { activeProcess.kill("SIGKILL"); } catch(e) {} activeProcess = null; } }
+
 module.exports = {
   streamPacmanCommand,
   cleanCache,
   removeOrphans,
   activeProcess,
-  runInTerminal,
+  runInTerminal, killActiveProcess,
 };

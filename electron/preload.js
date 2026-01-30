@@ -5,6 +5,8 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('api', {
   // Genel API
   getAppVersion: () => ipcRenderer.invoke('app:get-version'),
+  relaunch: () => ipcRenderer.invoke('app:relaunch'),
+  quit: () => ipcRenderer.invoke('app:quit'),
 
   // Pacman API
   pacman: {

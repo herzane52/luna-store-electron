@@ -51,6 +51,7 @@ interface AppContextType {
   orphans: string[];
   icons: Record<string, string>;
   isDataLoading: boolean;
+  showDevNote: boolean;
   refreshPackages: (force?: boolean) => Promise<void>;
   refreshUpdates: (force?: boolean) => Promise<void>;
 }
@@ -68,17 +69,27 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [ignoredPackages, setIgnoredPackages] = useState<string[]>([]);
   const [orphans, setOrphans] = useState<string[]>([]);
   const [icons, setIcons] = useState<Record<string, string>>({});
+  const [showDevNote, setShowDevNote] = useState(false);
+
+  useEffect(() => {
+    const checkDevStatus = async () => {
+      try {
+        const res = await fetch("https://luna.herzane.tr/api/dev");
+        const data = await res.json();
+        // API true dönerse göster, aksi halde gizli kalsın
+        setShowDevNote(data === true || data?.status === true);
+      } catch (e) {
+        setShowDevNote(false);
+      }
+    };
+    checkDevStatus();
+  }, []);
 
   const loadStrings = useCallback(async (lang: string) => {
     try {
       let strings = null;
       if (typeof window !== "undefined" && window.api) {
         strings = await window.api.settings.getLocale(lang);
-      }
-
-      if (!strings) {
-        const mod = await import(`../locales/${lang}.json`);
-        strings = mod.default || mod;
       }
 
       setLocalizedStrings(strings);
@@ -172,7 +183,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     <AppContext.Provider value={{
       settings, t, updateSettings, isLoading, availableLanguages,
       packages, updates, ignoredPackages, orphans, icons, isDataLoading,
-      refreshPackages, refreshUpdates, setAppData
+      refreshPackages, refreshUpdates, setAppData, showDevNote
     }}>
       {children}
     </AppContext.Provider>
