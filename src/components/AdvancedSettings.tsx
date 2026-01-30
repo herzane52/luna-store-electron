@@ -59,9 +59,9 @@ const AdvancedSettings = () => {
 
                 <button
                     onClick={async () => {
-                        if (confirm(t("advanced.resetSetupConfirm"))) {
+                        if (confirm(t("advanced.resetSetupConfirm") + "\n\n" + t("setup.restart_manual"))) {
                             await window.api.settings.resetSetup();
-                            window.location.href = "/setup";
+                            await window.api.relaunch();
                         }
                     }}
                     className="w-full p-3 rounded-full border border-red-500/30 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-bold transition-all"

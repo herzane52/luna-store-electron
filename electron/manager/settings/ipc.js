@@ -81,10 +81,9 @@ module.exports = (mainWindow) => {
   ipcMain.handle('settings:list-locales', async () => {
     try {
       const possiblePaths = [
-        path.join(app.getAppPath(), 'src', 'locales'),
-        path.join(__dirname, '..', '..', '..', 'src', 'locales'),
-        path.join(__dirname, '..', '..', 'src', 'locales'),
-        path.join(process.cwd(), 'src', 'locales')
+        path.join(app.getAppPath(), 'electron', 'locales'),
+        path.join(__dirname, '..', '..', 'locales'),
+        path.join(process.cwd(), 'electron', 'locales')
       ];
 
       let localesPath = '';
@@ -129,10 +128,9 @@ module.exports = (mainWindow) => {
   ipcMain.handle('settings:get-locale', async (event, lang) => {
     try {
       const possiblePaths = [
-        path.join(app.getAppPath(), 'src', 'locales'),
-        path.join(__dirname, '..', '..', '..', 'src', 'locales'),
-        path.join(__dirname, '..', '..', 'src', 'locales'),
-        path.join(process.cwd(), 'src', 'locales')
+        path.join(app.getAppPath(), 'electron', 'locales'),
+        path.join(__dirname, '..', '..', 'locales'),
+        path.join(process.cwd(), 'electron', 'locales')
       ];
 
       let localesPath = '';

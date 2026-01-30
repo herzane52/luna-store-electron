@@ -19,7 +19,7 @@ export default function SetupPage() {
         setMounted(true);
     }, []);
 
-    const { settings: appSettings, updateSettings: updateAppSettings, t } = useApp();
+    const { settings: appSettings, updateSettings: updateAppSettings, t, showDevNote } = useApp();
     const [step, setStep] = useState(0);
     const [theme, setTheme] = useState<keyof typeof THEMES>("vscode");
     const [defaultPage, setDefaultPage] = useState<string>("manager");
@@ -71,7 +71,7 @@ export default function SetupPage() {
                 preferredPackageManager: preferredHelper,
                 setupComplete: true,
             });
-            window.location.href = "/loading";
+            await window.api.relaunch();
         }
     };
 
@@ -211,9 +211,10 @@ export default function SetupPage() {
                                 <div className="space-y-3">
                                     <h2 className="text-3xl font-black">{t("setup.finish")}</h2>
                                     <p className="text-gray-400 leading-relaxed text-sm">{t("setup.finish_desc")}</p>
+                                    <p className="text-blue-400 font-bold text-sm animate-pulse">{t("setup.restart_manual")}</p>
                                 </div>
                                 <button onClick={finishSetup} className="w-full py-4 bg-white text-black rounded-2xl font-black text-xl shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:scale-105 transition active:scale-95 flex items-center justify-center gap-3">
-                                    {t("setup.start_app")} <Rocket size={24} />
+                                    {t("setup.close_and_exit")} <Rocket size={24} />
                                 </button>
                             </div>
                         )}
@@ -223,32 +224,34 @@ export default function SetupPage() {
                 <div className="absolute px-10 bottom-0 w-full">
                     <div className="overflow-hidden">
                         {/* Not Kısmı */}
-                        <div className="flex items-center justify-center gap-4">
-                            <div className="flex items-center gap-1">
-                                <div className="p-1.5 rounded-lg text-blue-500">
-                                    <Info size={16} />
+                        {showDevNote && (
+                            <div className="flex items-center justify-center gap-4">
+                                <div className="flex items-center gap-1">
+                                    <div className="p-1.5 rounded-lg text-blue-500">
+                                        <Info size={16} />
+                                    </div>
+                                    <div className="text-[14px] font-medium text-blue-500">
+                                        {t("setup.dev_note")}
+                                    </div>
                                 </div>
-                                <div className="text-[14px] font-medium text-blue-500">
-                                    {t("setup.dev_note")}
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={() => window.api.window.openExternal("https://github.com/herzane52/luna-store")}
+                                        className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
+                                        title="GitHub"
+                                    >
+                                        <Github size={14} />
+                                    </button>
+                                    <button
+                                        onClick={() => window.api.window.openExternal("https://luna.herzane.tr")}
+                                        className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
+                                        title="luna.herzane.tr"
+                                    >
+                                        <Globe size={14} />
+                                    </button>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <button
-                                    onClick={() => window.api.window.openExternal("https://github.com/herzane52/luna-store")}
-                                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
-                                    title="GitHub"
-                                >
-                                    <Github size={14} />
-                                </button>
-                                <button
-                                    onClick={() => window.api.window.openExternal("https://luna.herzane.tr")}
-                                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
-                                    title="luna.herzane.tr"
-                                >
-                                    <Globe size={14} />
-                                </button>
-                            </div>
-                        </div>
+                        )}
 
                         {/* Uyarı Kısmı */}
                         <div className="p-4 flex flex-col">

@@ -43,7 +43,7 @@
     "clearCacheSuccess": "Cache cleared successfully. You may need to restart the application for some changes to appear.",
     "clearCacheError": "Cache clearing error: ",
     "resetSetup": "Reset Setup",
-    "resetSetupConfirm": "Are you sure you want to reset the setup? The application will be restarted."
+    "resetSetupConfirm": "Are you sure you want to reset the setup? The application will close first."
   },
   "about": {
     "title": "About",
@@ -163,7 +163,9 @@
     "select_helper": "Choose Default AUR Helper",
     "arch_error": "Could not detect if your system is Arch-based. Some features may not work.",
     "checking": "Checking...",
-    "finish_desc": "Setup complete. Luna Store is now ready to use. Click the button to get started."
+    "finish_desc": "Configuration saved successfully.",
+    "restart_manual": "Please close and restart the application for the changes to take effect.",
+    "close_and_exit": "Close Application"
   },
   "themes": {
     "dark": "Dark",

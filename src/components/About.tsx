@@ -3,9 +3,6 @@
 import { useState, useEffect } from "react";
 import { Info, Loader2, Github, Globe } from "lucide-react";
 
-import tr from "../locales/tr.json";
-import en from "../locales/en.json";
-
 import { useApp } from "../context/AppContext";
 
 const About = () => {

@@ -8,7 +8,7 @@ import { useApp } from "../context/AppContext";
 
 export default function LoadingPage() {
     const router = useRouter();
-    const { settings, t, setAppData, isLoading: appLoading } = useApp();
+    const { settings, t, setAppData, isLoading: appLoading, showDevNote } = useApp();
 
     const [progress, setProgress] = useState(0);
     const [statusMessage, setStatusMessage] = useState("");
@@ -135,7 +135,7 @@ export default function LoadingPage() {
     if (!mounted || !settingsLoaded || appLoading) {
         return (
             <div className={`h-screen w-screen ${THEMES[settings?.theme || 'dark']?.class || 'bg-neutral-950'}`}>
-                <WindowTitleBar lang={settings?.language || "tr"} />
+                <WindowTitleBar />
             </div>
         );
     }
@@ -143,7 +143,7 @@ export default function LoadingPage() {
     return (
         <div className={`h-screen w-screen flex items-center justify-center ${THEMES[settings?.theme || 'dark']?.class || 'bg-neutral-950'} transition-colors duration-0 rounded-xl`}>
             <div className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden select-none text-white font-sans rounded-xl shadow-2xl">
-                <WindowTitleBar lang={settings?.language} />
+                <WindowTitleBar />
 
                 <div className="z-10 flex flex-col items-center gap-2 w-full max-w-2xl text-center">
                     <div className="relative">
@@ -191,32 +191,34 @@ export default function LoadingPage() {
                 <div className="absolute px-10 bottom-0 w-full">
                     <div className="overflow-hidden">
                         {/* Not Kısmı */}
-                        <div className="flex items-center justify-center gap-4">
-                            <div className="flex items-center gap-1">
-                                <div className="p-1.5 rounded-lg text-blue-500">
-                                    <Info size={16} />
+                        {showDevNote && (
+                            <div className="flex items-center justify-center gap-4">
+                                <div className="flex items-center gap-1">
+                                    <div className="p-1.5 rounded-lg text-blue-500">
+                                        <Info size={16} />
+                                    </div>
+                                    <div className="text-[14px] font-medium text-blue-500">
+                                        {t("setup.dev_note")}
+                                    </div>
                                 </div>
-                                <div className="text-[14px] font-medium text-blue-500">
-                                    {t("setup.dev_note")}
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={() => window.api.window.openExternal("https://github.com/herzane52/luna-store")}
+                                        className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
+                                        title="GitHub"
+                                    >
+                                        <Github size={14} />
+                                    </button>
+                                    <button
+                                        onClick={() => window.api.window.openExternal("https://luna.herzane.tr")}
+                                        className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
+                                        title="luna.herzane.tr"
+                                    >
+                                        <Globe size={14} />
+                                    </button>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <button
-                                    onClick={() => window.api.window.openExternal("https://github.com/herzane52/luna-store")}
-                                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
-                                    title="GitHub"
-                                >
-                                    <Github size={14} />
-                                </button>
-                                <button
-                                    onClick={() => window.api.window.openExternal("https://luna.herzane.tr")}
-                                    className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-white transition bg-white/5 rounded-full border border-white/5 hover:border-white/20 hover:scale-110 active:scale-95"
-                                    title="luna.herzane.tr"
-                                >
-                                    <Globe size={14} />
-                                </button>
-                            </div>
-                        </div>
+                        )}
 
                         {/* Uyarı Kısmı */}
                         <div className="p-4 flex flex-col">

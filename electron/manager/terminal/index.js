@@ -73,8 +73,16 @@ function resizePty(cols, rows) {
     }
 }
 
+function killPty() {
+    if (ptyProcess) {
+        ptyProcess.kill();
+        ptyProcess = null;
+    }
+}
+
 module.exports = {
     createPty,
     writeToPty,
-    resizePty
+    resizePty,
+    killPty
 };
