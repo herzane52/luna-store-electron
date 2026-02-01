@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libarchive-tools
+
       - name: Install Dependencies
         run: npm install
 
@@ -29,4 +34,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           release: true
-          linux_arch: 'x64'
