@@ -1,9 +1,13 @@
 {
   "name": "luna-store",
-  "version": "1.3.1",
+  "version": "1.3.3",
   "description": "Luna Store - Electron tabanlı uygulama mağazası.",
   "author": "herzane <herzane@tr>",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/herzane52/luna-store-electron.git"
+  },
   "main": "electron/main.js",
   "scripts": {
     "next:dev": "next dev",
@@ -31,6 +35,13 @@
       "build/out/**/*",
       "electron/**/*",
       "package.json"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "herzane52",
+        "repo": "luna-store-electron"
+      }
     ]
   },
   "dependencies": {
