@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">Luna Store (Version Electron)</h1>
-<p align="center"><i>Application de gestion de paquets pour Arch Linux</i></p>
+<p align="center"><i>Application de Gestion de Paquets Moderne et Rapide pour Arch Linux</i></p>
 
 <p align="center">
   <a href="https://archlinux.org"><img src="https://img.shields.io/badge/Platform-Arch_Linux-blue?style=flat-square&logo=arch-linux&logoColor=white" alt="Linux"></a>
@@ -17,64 +17,92 @@
 
 ---
 
-> **NOTE IMPORTANTE :** Ce projet a été abandonné à ce stade en raison de l'utilisation élevée de la mémoire (RAM) d'Electron. Le processus de développement a été porté vers le langage **Rust** et se poursuit avec l'infrastructure **Tauri** à l'adresse [luna-store](https://github.com/herzane52/luna-store) (Le développement est en cours). Ce dépôt représente le premier et le dernier état stable du processus Electron. 
+## ✨ Caractéristiques
 
-**Information :**
-- Aucun nouveau développement de fonctionnalités ne sera effectué pour cette version.
-- Le processus de développement sera limité uniquement aux corrections de bugs critiques et aux ajustements cosmétiques mineurs.
+- 🎨 **Interface Moderne :** Options de couleurs personnalisables, support du mode sombre et design esthétique haut de gamme.
+- 📦 **Gestion des Paquets :** Suivez facilement les paquets installés, installez de nouveaux paquets en un clic ou supprimez-les du système (page Manager).
+- 🔄 **Mises à Jour du Système :** Suivi instantané de toutes les mises à jour dans les dépôts et possibilité de mise à jour groupée en un clic.
+- 🔍 **Recherche Intelligente :** Recherche rapide dans les dépôts Pacman et AUR, filtrage par catégorie et informations détaillées sur les paquets.
+- 🐚 **Terminal Intégré :** Console intégrée performante pour suivre tous les processus d'installation et de suppression en temps réel.
+- 🌐 **Support Linguistique :** Actuellement disponible en **Turc, Anglais et Français**.
+- 🛠️ **Outils de Gestion :** Outils utilitaires pour nettoyer les paquets orphelins et optimiser le système.
 
 ---
 
-## ✨ Caractéristiques
+## 🚀 Environnements Testés
 
-- 🎨 **Interface Moderne :** Design esthétique et convivial.
-- 📦 **Gestion Complète des Paquets :** Recherchez, listez, installez ou supprimez facilement des paquets Pacman et AUR.
-- 🐚 **Terminal Intégré :** Expérience de terminal intégrée pour suivre les opérations en temps réel.
-- 🔍 **Recherche Intelligente :** Résultats instantanés et listes de paquets catégorisées.
-- 🌐 **Support Multilingue :** Prise en charge de 10 langues différentes avec une expérience localisée.
+L'application a été testée personnellement et fonctionne parfaitement dans l'environnement suivant :
+- **Système d'Exploitation :** Arch Linux
+- **Environnement de Bureau :** KDE Plasma
+- **Serveur d'Affichage :** Wayland
+
+> [!NOTE]
+> L'application devrait également fonctionner sur d'autres environnements de bureau (GNOME, XFCE, etc.) et sur X11 ; veuillez signaler tout problème rencontré.
+
+---
+
+## 📦 Conditions Requises
+
+Pour faire fonctionner l'application, une **distribution basée sur Arch Linux** (Manjaro, EndeavourOS, etc.) et les paquets suivants sont requis :
+
+- `pacman` (Gestionnaire de paquets système)
+- `pacman-contrib` (Requis pour la vérification des mises à jour)
+- `polkit` / `pkexec` (Requis pour l'authentification)
+- `yay` ou `paru` (Recommandé pour le support AUR)
 
 ---
 
 <h2 align="center">📸 Captures d'écran</h2>
 
 <p align="center">
-      <img src="../Image/terminal.png" width="600" style="border-radius: 10px; margin: 5px;">
-      <img src="../Image/updates.png" width="600" style="border-radius: 10px; margin: 5px;">
+      <img src="../Image/terminal.png" width="800" style="border-radius: 10px; margin: 10px;">
       <br>
-      <img src="../Image/manager.png" width="600" style="border-radius: 10px; margin: 5px;">
+      <img src="../Image/updates.png" width="800" style="border-radius: 10px; margin: 10px;">
+      <br>
+      <img src="../Image/manager.png" width="800" style="border-radius: 10px; margin: 10px;">
 </p>
 
 ---
 
-<h2 align="center">🛠️ Installation et Exécution</h2>
+## 🛠️ Installation et Développement
 
-S'il vous plaît suivez les étapes ci-dessous pour exécuter le projet sur votre machine locale :
+Pour exécuter ou packager le projet sur votre machine locale :
 
+### 1. Préparation
 ```bash
 # Cloner le dépôt
 git clone https://github.com/herzane52/luna-store-electron.git
 cd luna-store-electron
-```
-```bash
+
 # Installer les dépendances
 npm install
 ```
-Pour exécuter :
+
+### 2. Mode Développement
 ```bash
-# Démarrer le Frontend et l'Application
-npm run next:dev   # Frontend
-npm run electron   # Application
+# Terminal 1 : Lancer le serveur de développement Frontend (Next.js)
+npm run next:dev
+
+# Terminal 2 : Lancer l'Application (Electron)
+npm run electron
 ```
 
-Pour compiler l'application :
+> Le serveur de développement (`next:dev`) peut prendre un certain temps à être prêt. Veuillez vous assurer que le serveur est complètement opérationnel (Ready) dans le terminal avant de lancer Electron, sinon vous pourriez rencontrer des erreurs de connexion.
+
+### 3. Empaquetage (Build)
 ```bash
-# Compiler le Frontend
+# Compiler d'abord le frontend
 npm run next:build
 
-# Générer les paquets Linux (Pacman & AppImage)
+# Générer les paquets Linux (.pacman, .AppImage)
 npm run build:linux
 ```
+
 ---
+
+## 📄 Licence
+Ce projet est protégé par la licence **GPL-3.0**. Pour plus d'informations, vous pouvez consulter le fichier [LICENSE](../LICENSE).
+
 <p align="center">
   Avec amour pour la communauté Arch Linux. ❤️
 </p>

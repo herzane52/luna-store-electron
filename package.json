@@ -11,7 +11,6 @@
     "next:start": "next start",
     "lint": "eslint",
     "electron": "electron .",
-    "electron:prod": "ELECTRON_IS_DEV=false electron .",
     "build:linux": "electron-builder --linux"
   },
   "build": {
