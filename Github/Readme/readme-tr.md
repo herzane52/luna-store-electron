@@ -5,6 +5,9 @@
 <h1 align="center">Luna Store (Electron Versiyonu)</h1>
 <p align="center"><i>Arch Linux için Modern ve Hızlı Paket Yönetim Uygulaması</i></p>
 
+> **ÖNEMLİ NOT:** Bu proje, Electron'un yüksek bellek (RAM) kullanımı nedeniyle bu aşamada bırakılmıştır. Geliştirme süreci **Rust** diline portlanmış olup, proje yoluna **Tauri** altyapısıyla [luna-store](https://github.com/herzane52/luna-store) adresinden devam etmektedir (Geliştirme süreci devam ediyor). Bu repo, Electron sürecindeki ilk ve son kararlı halini temsil eder. 
+
+
 <p align="center">
   <a href="https://archlinux.org"><img src="https://img.shields.io/badge/Platform-Arch_Linux-blue?style=flat-square&logo=arch-linux&logoColor=white" alt="Linux"></a>
   <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Framework-Electron-brightgreen?style=flat-square&logo=electron&logoColor=white" alt="Electron"></a>
@@ -12,7 +15,7 @@
 </p>
 
 <p align="center">
-  <b><a href="../../readme.md">English</a> | <a href="readme-fr.md">Français</a> | <a href="readme-tr.md">Türkçe</a></b>
+  <b><a href="../../readme.md">English</a> | <a href="readme-tr.md">Türkçe</a></b>
 </p>
 
 ---
@@ -24,7 +27,7 @@
 - 🔄 **Sistem Güncellemeleri:** Depolardaki tüm güncellemeleri anlık takip etme ve tek tıkla toplu güncelleme imkanı.
 - 🔍 **Akıllı Arama:** Pacman ve AUR depolarında hızlı arama, kategori bazlı filtreleme ve detaylı paket bilgileri.
 - 🐚 **Entegre Terminal:** Tüm yükleme ve kaldırma süreçlerini gerçek zamanlı izleyebileceğiniz performanslı gömülü terminal.
-- 🌐 **Dil Desteği:** Şu an için **Türkçe, İngilizce ve Fransızca** dil seçenekleri mevcuttur.
+- 🌐 **Dil Desteği:** Şu an için **Türkçe, İngilizce, Fransızca, Almanca, İspanyolca, Portekizce, Rusça, İtalyanca ve Azerbaycan Türkçesi** dil seçenekleri mevcuttur. (Türkçe harici diller yapay zeka ile çevrilmiştir.)
 - 🛠️ **Yönetim Araçları:** Yetim paketleri temizleme ve sistem optimizasyonu için yardımcı araçlar.
 
 ---
@@ -97,6 +100,22 @@ npm run next:build
 # Linux paketlerini (.pacman, .AppImage) oluşturun
 npm run build:linux
 ```
+
+---
+
+## 📥 Kurulum (Son Kullanıcılar İçin)
+
+Eğer projeyi geliştirmek yerine direkt kullanmak istiyorsanız:
+
+1. **Pacman Yöntemi (Önerilen):**
+   - [Releases](../../releases) sayfasından `.pacman` paketini indirin.
+   - Terminalden şu komutu çalıştırın:
+     ```bash
+     sudo pacman -U luna-store-1.3.5.pacman
+     ```
+2. **AppImage Yöntemi:**
+   - `.AppImage` dosyasını indirin.
+   - Dosyaya sağ tıklayıp *Özellikler -> İzinler* kısmından "Çalıştırılabilir" olarak işaretleyin ve açın.
 
 ---
 
