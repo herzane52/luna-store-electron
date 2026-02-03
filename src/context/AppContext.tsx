@@ -74,11 +74,23 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const checkDevStatus = async () => {
       try {
-        const res = await fetch("https://luna.herzane.tr/api/dev");
+        // luna.herzane.tr üzerindeki API'yi kontrol et
+        const res = await fetch("https://luna.herzane.tr/api/dev", {
+          cache: 'no-store' // Önbelleği devre dışı bırak
+        });
+
+        if (!res.ok) throw new Error("API error");
+
         const data = await res.json();
-        // API true dönerse göster, aksi halde gizli kalsın
-        setShowDevNote(data === true || data?.status === true);
+
+        // API { status: true } veya direkt true dönerse göster
+        const isEnabled = data === true || data?.status === true;
+        setShowDevNote(isEnabled);
+
+        console.log("Dev note status:", isEnabled);
       } catch (e) {
+        // Hata durumunda veya internet yoksa gizli kalsın
+        console.warn("Could not fetch dev status, hidden by default.");
         setShowDevNote(false);
       }
     };

@@ -47,7 +47,7 @@ const ManagerPage: React.FC = () => {
     searchTerm: '',
     filterType: 'explicit',
     selectedPackage: null,
-    leftPanelWidth: 450,
+    leftPanelWidth: 650,
     detailsPanelWidth: 0,
     isResizing: false,
     isTogglingIgnore: false,
@@ -266,16 +266,13 @@ const ManagerPage: React.FC = () => {
                   const isIgnored = ignoredPackages.includes(pkg.name);
                   const iconUrl = icons[pkg.name];
 
-                  const isChaotic = pkg.repo === 'chaotic-aur';
-                  const isAUR = pkg.repo === 'aur' || pkg.repo?.includes('aur');
-
-                  const getRepoBadgeColor = () => {
-                    if (isChaotic) return 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20';
-                    if (isAUR) return 'text-orange-400 bg-orange-400/10 border-orange-400/20';
-                    return 'text-gray-500 bg-white/5 border-white/10';
+                  const getRepoColors = (repo?: string) => {
+                    if (repo === 'chaotic-aur') return 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20';
+                    if (repo === 'aur' || repo?.includes('aur')) return 'text-orange-400 bg-orange-400/10 border-orange-400/20';
+                    return 'text-blue-400 bg-blue-500/10 border-blue-500/20';
                   };
 
-                  const repoBadgeClasses = getRepoBadgeColor();
+                  const repoBadgeClasses = getRepoColors(pkg.repo);
 
                   return (
                     <div
@@ -302,7 +299,7 @@ const ManagerPage: React.FC = () => {
                           <span className={`text-[9px] font-black px-1.5 py-0.5 rounded border uppercase tracking-tighter ${repoBadgeClasses}`}>{pkg.repo}</span>
                         )}
                         {pkg.installedSize && (
-                          <span className="text-[10px] font-bold text-gray-500 bg-white/5 px-1.5 py-0.5 rounded border border-white/10">{pkg.installedSize}</span>
+                          <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${repoBadgeClasses}`}>{pkg.installedSize}</span>
                         )}
                         {isIgnored && <Lock size={14} className="text-yellow-400 opacity-80" />}
                       </div>
@@ -334,15 +331,7 @@ const ManagerPage: React.FC = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-1">
-                    <h3 className="text-xl font-bold text-white capitalize truncate">{uiState.selectedPackage.name.replace(/[-]/g, ' ')}</h3>
-                    {uiState.selectedPackage.repo && (
-                      <span className={`text-[10px] font-black px-2 py-0.5 rounded border uppercase tracking-widest ${uiState.selectedPackage.repo === 'chaotic-aur'
-                        ? 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20'
-                        : (uiState.selectedPackage.repo === 'aur' || uiState.selectedPackage.repo?.includes('aur'))
-                          ? 'text-orange-400 bg-orange-400/10 border-orange-400/20'
-                          : 'text-blue-400 bg-blue-500/10 border-blue-500/20'
-                        }`}>{uiState.selectedPackage.repo}</span>
-                    )}
+                    <h3 className="text-lg font-bold text-white capitalize truncate">{uiState.selectedPackage.name.replace(/-(bin|git|aur|libs|devel|beta|alpha|rc)$|-(appimage)$/gi, '').replace(/[-]/g, ' ')}</h3>
                   </div>
                   <div className="flex items-center gap-3">
                     <p className="text-gray-400 text-sm font-medium">v{uiState.selectedPackage.version}</p>
