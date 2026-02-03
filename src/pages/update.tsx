@@ -137,9 +137,9 @@ const UpdatePage: React.FC = () => {
                 <div className="mt-auto pt-3 border-t border-white/5 flex items-center justify-between text-[11px]">
                     <div className="flex flex-col">
                         <div className="flex items-center gap-1.5 overflow-hidden">
-                            <span className="text-white/40 line-through truncate max-w-[60px] font-mono">{pkg.currentVersion}</span>
+                            <span className="text-white/40 line-through truncate max-w-[100px] font-mono">{pkg.currentVersion}</span>
                             <ArrowRight size={10} className="text-gray-600 flex-shrink-0" />
-                            <span className={`${badgeClasses} font-bold px-1.5 py-0.5 rounded border font-mono truncate max-w-[60px]`}>{pkg.newVersion}</span>
+                            <span className={`${badgeClasses} font-bold px-1.5 py-0.5 rounded border font-mono truncate max-w-[100px]`}>{pkg.newVersion}</span>
                         </div>
                     </div>
                     <div className="flex items-center gap-1.5">
