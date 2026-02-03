@@ -5,6 +5,8 @@
 <h1 align="center">Luna Store (Electron Version)</h1>
 <p align="center"><i>Modern and Fast Package Management Application for Arch Linux</i></p>
 
+> **IMPORTANT NOTE:** This project has been discontinued at this stage due to high memory (RAM) usage of Electron. The development process has been ported to the **Rust** language, and the project continues with the **Tauri** infrastructure at [luna-store](https://github.com/herzane52/luna-store) (Development in progress). This repository represents the first and last stable state of the Electron process.
+
 <p align="center">
   <a href="https://archlinux.org"><img src="https://img.shields.io/badge/Platform-Arch_Linux-blue?style=flat-square&logo=arch-linux&logoColor=white" alt="Linux"></a>
   <a href="https://www.electronjs.org/"><img src="https://img.shields.io/badge/Framework-Electron-brightgreen?style=flat-square&logo=electron&logoColor=white" alt="Electron"></a>
@@ -12,7 +14,7 @@
 </p>
 
 <p align="center">
-  <b><a href="readme.md">English</a> | <a href="Github/Readme/readme-fr.md">Français</a> | <a href="Github/Readme/readme-tr.md">Türkçe</a></b>
+  <b><a href="readme.md">English</a> | <a href="Github/Readme/readme-tr.md">Türkçe</a></b>
 </p>
 
 ---
@@ -24,7 +26,7 @@
 - 🔄 **System Updates:** Instant tracking of all updates in the repositories and one-click bulk update capability.
 - 🔍 **Smart Search:** Fast searching in Pacman and AUR repositories, category-based filtering, and detailed package information.
 - 🐚 **Integrated Terminal:** High-performance embedded terminal where you can monitor all installation and removal processes in real-time.
-- 🌐 **Language Support:** Currently available in **Turkish, English, and French**.
+- 🌐 **Language Support:** Currently available in **Turkish, English, French, German, Spanish, Portuguese, Russian, Italian, and Azerbaijani**. (Languages other than Turkish are AI-translated).
 - 🛠️ **Management Tools:** Utility tools for cleaning orphan packages and system optimization.
 
 ---
@@ -97,6 +99,22 @@ npm run next:build
 # Generate Linux packages (.pacman, .AppImage)
 npm run build:linux
 ```
+
+---
+
+## 📥 Installation (For End Users)
+
+If you want to use the application directly without development:
+
+1. **Pacman Method (Recommended):**
+   - Download the `.pacman` package from the [Releases](../../releases) page.
+   - Run the following command in your terminal:
+     ```bash
+     sudo pacman -U luna-store-1.3.5.pacman
+     ```
+2. **AppImage Method:**
+   - Download the `.AppImage` file.
+   - Right-click the file -> *Properties -> Permissions* and check "Allow executing file as program", then open it.
 
 ---
 
