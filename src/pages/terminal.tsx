@@ -113,12 +113,28 @@ const TerminalPage = () => {
                 term.focus();
             }
 
+            let resizeTimeout: any;
             const handleResize = () => {
                 if (!term || !fitAddon || !terminalRef.current) return;
-                try {
-                    fitAddon.fit();
-                    window.api.terminal.resize(term.cols, term.rows);
-                } catch (e) { }
+
+                const performFit = () => {
+                    try {
+                        if (fitAddon && term) {
+                            fitAddon.fit();
+                            window.api.terminal.resize(term.cols, term.rows);
+                            term.scrollToBottom();
+                        }
+                    } catch (e) { }
+                };
+
+                // Yeniden boyutlandırma
+                performFit();
+
+                // Kaymaları düzeltme
+                setTimeout(performFit, 150);
+
+                if (resizeTimeout) clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(performFit, 1000);
             };
 
             window.addEventListener("resize", handleResize);
@@ -185,7 +201,7 @@ const TerminalPage = () => {
 
     return (
         <div
-            className="h-full w-full flex flex-col px-4 animate-in fade-in duration-500"
+            className="h-full w-full flex flex-col px-4 pb-15 animate-in fade-in duration-500"
             onClick={handleGlobalClick}
         >
             {/* Container */}
@@ -200,13 +216,15 @@ const TerminalPage = () => {
                     </div>
                 )}
 
-                <div className="flex-1 relative p-1">
-                    <div ref={terminalRef} className="h-full w-full" style={{ minHeight: '300px' }} />
+                <div className="flex-1 relative min-h-0 p-2">
+                    <div
+                        ref={terminalRef}
+                        className="w-full h-full"
+                    />
                     <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_2px,3px_100%] opacity-20" />
                 </div>
             </div>
 
-            <div className="h-4"></div>
 
             <style jsx global>{`
                 .xterm-viewport::-webkit-scrollbar {
