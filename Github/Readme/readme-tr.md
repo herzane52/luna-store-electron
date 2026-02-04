@@ -20,19 +20,19 @@
 
 ---
 
-## ✨ Özellikler
+##  Özellikler
 
-- 🎨 **Modern Arayüz:** Kişiselleştirilebilir renk seçenekleri, karanlık mod desteği ve premium hissettiren estetik tasarım.
-- 📦 **Paket Yönetimi:** Kurulu paketleri kolayca izleme, yeni paketleri tek tıkla kurma veya sistemden kaldırma (Manager sayfası).
-- 🔄 **Sistem Güncellemeleri:** Depolardaki tüm güncellemeleri anlık takip etme ve tek tıkla toplu güncelleme imkanı.
-- 🔍 **Akıllı Arama:** Pacman ve AUR depolarında hızlı arama, kategori bazlı filtreleme ve detaylı paket bilgileri.
-- 🐚 **Entegre Terminal:** Tüm yükleme ve kaldırma süreçlerini gerçek zamanlı izleyebileceğiniz performanslı gömülü terminal.
-- 🌐 **Dil Desteği:** Şu an için **Türkçe, İngilizce, Fransızca, Almanca, İspanyolca, Portekizce, Rusça, İtalyanca ve Azerbaycan Türkçesi** dil seçenekleri mevcuttur. (Türkçe harici diller yapay zeka ile çevrilmiştir.)
-- 🛠️ **Yönetim Araçları:** Yetim paketleri temizleme ve sistem optimizasyonu için yardımcı araçlar.
+-  **Modern Arayüz:** Kişiselleştirilebilir renk seçenekleri, karanlık mod desteği ve premium hissettiren estetik tasarım.
+-  **Paket Yönetimi:** Kurulu paketleri kolayca izleme, yeni paketleri tek tıkla kurma veya sistemden kaldırma (Manager sayfası).
+-  **Sistem Güncellemeleri:** Depolardaki tüm güncellemeleri anlık takip etme ve tek tıkla toplu güncelleme imkanı.
+-  **Akıllı Arama:** Pacman ve AUR depolarında hızlı arama, kategori bazlı filtreleme ve detaylı paket bilgileri.
+-  **Entegre Terminal:** Tüm yükleme ve kaldırma süreçlerini gerçek zamanlı izleyebileceğiniz performanslı gömülü terminal.
+-  **Dil Desteği:** Şu an için **Türkçe, İngilizce, Fransızca, Almanca, İspanyolca, Portekizce, Rusça, İtalyanca ve Azerbaycan Türkçesi** dil seçenekleri mevcuttur. (Türkçe harici diller yapay zeka ile çevrilmiştir.)
+-  **Yönetim Araçları:** Yetim paketleri temizleme ve sistem optimizasyonu için yardımcı araçlar.
 
 ---
 
-## 🚀 Test Edilen Ortamlar
+##  Test Edilen Ortamlar
 
 Uygulama aşağıdaki ortamda bizzat test edilmiş ve sorunsuz çalışmaktadır:
 - **İşletim Sistemi:** Arch Linux
@@ -44,7 +44,7 @@ Uygulama aşağıdaki ortamda bizzat test edilmiş ve sorunsuz çalışmaktadır
 
 ---
 
-## 📦 Gereksinimler
+##  Gereksinimler
 
 Uygulamanın çalışabilmesi için **Arch Linux tabanlı bir dağıtım** (Manjaro, EndeavourOS vb.) ve şu paketlerin yüklü olması gereklidir:
 
@@ -55,7 +55,7 @@ Uygulamanın çalışabilmesi için **Arch Linux tabanlı bir dağıtım** (Manj
 
 ---
 
-<h2 align="center">📸 Görseller</h2>
+##  Görseller
 
 <p align="center">
       <img src="../Image/terminal.png" width="800" style="border-radius: 10px; margin: 10px;">
@@ -67,7 +67,13 @@ Uygulamanın çalışabilmesi için **Arch Linux tabanlı bir dağıtım** (Manj
 
 ---
 
-## 🛠️ Kurulum ve Geliştirme
+##  Kurulum (Son Kullanıcılar İçin)
+
+Uygulamanın kurulumu ve gerekli paketler [Releases](../../releases) sayfasında detaylıca anlatılmaktadır. Kurulum adımları release notlarında mevcuttur.
+
+---
+
+##  Geliştirme İçin Kurulum
 
 Projeyi yerel makinenizde çalıştırmak veya paketlemek için:
 
@@ -101,26 +107,9 @@ npm run next:build
 npm run build:linux
 ```
 
----
-
-## 📥 Kurulum (Son Kullanıcılar İçin)
-
-Eğer projeyi geliştirmek yerine direkt kullanmak istiyorsanız:
-
-1. **Pacman Yöntemi (Önerilen):**
-   - [Releases](../../releases) sayfasından `.pacman` paketini indirin.
-   - Terminalden şu komutu çalıştırın:
-     ```bash
-     sudo pacman -U luna-store-1.3.5.pacman
-     ```
-2. **AppImage Yöntemi:**
-   - `.AppImage` dosyasını indirin.
-   - Dosyaya sağ tıklayıp *Özellikler -> İzinler* kısmından "Çalıştırılabilir" olarak işaretleyin ve açın.
-
----
-
-## 📄 Lisans
+##  Lisans
 Bu proje **GPL-3.0** lisansı altında korunmaktadır. Daha fazla bilgi için [LICENSE](../../LICENSE) dosyasına göz atabilirsiniz.
+---
 
 <p align="center">
   Arch Linux topluluğuna sevgilerle. ❤️
