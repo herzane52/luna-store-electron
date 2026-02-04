@@ -19,19 +19,19 @@
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🎨 **Modern Interface:** Customizable color options, dark mode support, and an aesthetic design that feels premium.
-- 📦 **Package Management:** Easily track installed packages, install new ones with one click, or remove them from the system (Manager page).
-- 🔄 **System Updates:** Instant tracking of all updates in the repositories and one-click bulk update capability.
-- 🔍 **Smart Search:** Fast searching in Pacman and AUR repositories, category-based filtering, and detailed package information.
-- 🐚 **Integrated Terminal:** High-performance embedded terminal where you can monitor all installation and removal processes in real-time.
-- 🌐 **Language Support:** Currently available in **Turkish, English, French, German, Spanish, Portuguese, Russian, Italian, and Azerbaijani**. (Languages other than Turkish are AI-translated).
-- 🛠️ **Management Tools:** Utility tools for cleaning orphan packages and system optimization.
+-  **Modern Interface:** Customizable color options, dark mode support, and an aesthetic design that feels premium.
+-  **Package Management:** Easily track installed packages, install new ones with one click, or remove them from the system (Manager page).
+-  **System Updates:** Instant tracking of all updates in the repositories and one-click bulk update capability.
+-  **Smart Search:** Fast searching in Pacman and AUR repositories, category-based filtering, and detailed package information.
+-  **Integrated Terminal:** High-performance embedded terminal where you can monitor all installation and removal processes in real-time.
+-  **Language Support:** Currently available in **Turkish, English, French, German, Spanish, Portuguese, Russian, Italian, and Azerbaijani**. (Languages other than Turkish are AI-translated).
+-  **Management Tools:** Utility tools for cleaning orphan packages and system optimization.
 
 ---
 
-## 🚀 Tested Environments
+##  Tested Environments
 
 The application has been personally tested and works smoothly in the following environment:
 - **Operating System:** Arch Linux
@@ -43,7 +43,7 @@ The application has been personally tested and works smoothly in the following e
 
 ---
 
-## 📦 Requirements
+##  Requirements
 
 To run the application, an **Arch Linux-based distribution** (Manjaro, EndeavourOS, etc.) and the following packages are required:
 
@@ -54,7 +54,7 @@ To run the application, an **Arch Linux-based distribution** (Manjaro, Endeavour
 
 ---
 
-<h2 align="center">📸 Screenshots</h2>
+##  Screenshots
 
 <p align="center">
       <img src="Github/Image/terminal.png" width="800" style="border-radius: 10px; margin: 10px;">
@@ -66,7 +66,13 @@ To run the application, an **Arch Linux-based distribution** (Manjaro, Endeavour
 
 ---
 
-## 🛠️ Installation and Development
+##  Installation (For End Users)
+
+The installation of the application and required packages are explained in detail on the [Releases](../../releases) page. Installation steps are available in the release notes.
+
+---
+
+## 🛠️ Installation for Development
 
 To run or package the project on your local machine:
 
@@ -102,24 +108,9 @@ npm run build:linux
 
 ---
 
-## 📥 Installation (For End Users)
-
-If you want to use the application directly without development:
-
-1. **Pacman Method (Recommended):**
-   - Download the `.pacman` package from the [Releases](../../releases) page.
-   - Run the following command in your terminal:
-     ```bash
-     sudo pacman -U luna-store-1.3.5.pacman
-     ```
-2. **AppImage Method:**
-   - Download the `.AppImage` file.
-   - Right-click the file -> *Properties -> Permissions* and check "Allow executing file as program", then open it.
-
----
-
-## 📄 License
+##  License
 This project is protected under the **GPL-3.0** license. For more information, you can check the [LICENSE](LICENSE) file.
+---
 
 <p align="center">
   With love to the Arch Linux community. ❤️
