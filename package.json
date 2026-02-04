@@ -1,6 +1,6 @@
 {
-  "name": "luna-store",
-  "version": "1.3.5",
+  "name": "luna-store-electron",
+  "version": "1.3.6",
   "description": "Luna Store - Electron tabanlı uygulama mağazası.",
   "author": "herzane <luna@herzane.tr>",
   "private": true,
@@ -63,7 +63,7 @@
     "framer-motion": "^12.23.12",
     "freedesktop-icons": "^1.0.0",
     "lucide-react": "^0.542.0",
-    "next": "15.5.0",
+    "next": "^16.1.6",
     "node-pty": "^1.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",

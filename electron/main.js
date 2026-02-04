@@ -54,7 +54,7 @@ function createMainWindow() {
     minHeight: 600,
     show: false, // did-finish-load ile gösterilecek
     frame: false,
-    //transparent: true,
+    transparent: true,
     backgroundColor: '#00000000',
     icon: path.join(__dirname, 'assets', 'luna.png'),
     webPreferences: {
