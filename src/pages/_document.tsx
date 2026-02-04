@@ -6,7 +6,8 @@ export default function Document() {
       <Head>
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: file: local-resource:; font-src 'self' data:; connect-src 'self' ws: http: https:;"
+          content={`default-src 'self'; script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""
+            }; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: file: local-resource:; font-src 'self' data:; connect-src 'self' ws: http: https:;`}
         />
       </Head>
       <body>

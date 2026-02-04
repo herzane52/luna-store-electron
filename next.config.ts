@@ -3,10 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
-  // ESLint uyarılarını build sırasında dikkate alma
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
 
   // Statik export ayarı (Electron için gerekli)
   output: "export",
@@ -22,6 +18,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  // Turbopack yapılandırması (Next.js 16+ için boş obje hatayı giderir)
+  turbopack: {},
 
   // Webpack yapılandırması - Dosya izleme optimizasyonu
   webpack: (config, { dev, isServer }) => {
