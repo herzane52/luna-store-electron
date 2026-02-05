@@ -1,7 +1,7 @@
 {
   "name": "luna-store-electron",
   "version": "1.3.6",
-  "description": "Luna Store - Electron tabanlı uygulama mağazası.",
+  "description": "Luna Store - Arch package manager.",
   "author": "herzane <luna@herzane.tr>",
   "private": true,
   "repository": {
@@ -19,7 +19,7 @@
   },
   "build": {
     "appId": "tr.herzane.luna",
-    "productName": "Luna Store",
+    "productName": "luna-store-electron",
     "directories": {
       "output": "build/dist"
     },
