@@ -5,7 +5,7 @@
 <h1 align="center">Luna Store (Electron Version)</h1>
 <p align="center"><i>Modern and Fast Package Management Application for Arch Linux</i></p>
 
-> **IMPORTANT NOTE:** This project has been discontinued at this stage due to high memory (RAM) usage of Electron. The development process has been ported to the **Rust** language, and the project continues with the **Tauri** infrastructure at [luna-store](https://github.com/herzane52/luna-store) (Development in progress). This repository represents the first and last stable state of the Electron process.
+> **IMPORTANT NOTE:** This project has been discontinued at this stage due to high memory (RAM) usage of Electron. The development process has been ported to the **Rust** language, and the project continues with the **Tauri** infrastructure at [luna-manager](https://github.com/herzane52/luna-manager) (Development in progress). This repository represents the first and last stable state of the Electron process.
 
 <p align="center">
   <a href="https://archlinux.org"><img src="https://img.shields.io/badge/Platform-Arch_Linux-blue?style=flat-square&logo=arch-linux&logoColor=white" alt="Linux"></a>
