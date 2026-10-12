@@ -5,7 +5,8 @@
 <h1 align="center">Luna Store (Electron Versiyonu)</h1>
 <p align="center"><i>Arch Linux için Modern ve Hızlı Paket Yönetim Uygulaması</i></p>
 
-> **ÖNEMLİ NOT:** Bu proje, Electron'un yüksek bellek (RAM) kullanımı nedeniyle bu aşamada bırakılmıştır. Geliştirme süreci **Rust** diline portlanmış olup, proje yoluna **Tauri** altyapısıyla [luna-store](https://github.com/herzane52/luna-store) adresinden devam etmektedir (Geliştirme süreci devam ediyor). Bu repo, Electron sürecindeki ilk ve son kararlı halini temsil eder. 
+> [!IMPORTANT]
+> Bu proje, Electron'un yüksek bellek (RAM) kullanımı nedeniyle bu aşamada bırakılmıştır. Geliştirme süreci **Rust** diline portlanmış olup, proje yoluna **Tauri** altyapısıyla [luna-store](https://github.com/herzane52/luna-store) adresinden devam etmektedir (Geliştirme süreci devam ediyor). Bu repo, Electron sürecindeki ilk ve son kararlı halini temsil eder. 
 
 
 <p align="center">
